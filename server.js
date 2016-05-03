@@ -6,34 +6,20 @@ var mongoose = require('mongoose');
 // Connection to DB
 mongoose.connect('mongodb://localhost/jic', function(err, res) {
   if(err) throw err;
-  console.log('Connected to Database');
+  console.log('Conectado a la base de datos...');
 });
-
-
-var models = require('./models/Persona') (app, mongoose);
-var PersonasCrtl = require('./controllers/personas');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
-var router = express.Router();
-
-router.get('/', function(req, res) {
-	res.json({message:'HOlI'});
-});
-
-router.route('/personas')
-	.get(PersonasCrtl.all)
-	.post(PersonasCrtl.add);
-
-router.route('/personas/:id')
-	.get(PersonasCrtl.byId)
-	.put(PersonasCrtl.update)
-	.delete(PersonasCrtl.delete);
 
 
-app.use('/api', router);
+app.get('/', function(req, res) {
+	res.send("HOLI");
+})
+var api = require('./routes/api');
+app.use('/api', api);
 
 //Iniciar Servidor
 app.listen(port, function() {
