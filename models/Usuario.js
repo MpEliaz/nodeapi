@@ -1,11 +1,15 @@
 var mongoose = require('mongoose');
-var restful = require('node-restful');
 
 Schema = mongoose.Schema;
 
 var UsuarioSchema = new Schema({
 	nombre: {type: String},
-	apellido: {type: String}
+	apellido: {type: String},
+	telefono: {type: String},
+	email: {type: String},
+	comuna: {type: String},
+	
+	
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema);

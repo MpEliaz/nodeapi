@@ -2,7 +2,7 @@
 	var Usuario = require('../models/Usuario.js');
 
 	//GET obtener todas las personas
-	exports.allUser = function(req, res) {
+	exports.all = function(req, res) {
 		Usuario.find(function (err, personas) {
 			if(err)res.send(500, err.message);
 
@@ -22,10 +22,10 @@
 	}
 
 	//POST insertar objecto
-	exports.addUser = function(req, res) {
+	exports.add = function(req, res) {
 		var p = new Usuario({
 			nombre: req.body.nombre,
-			apellido: req.body.apellido
+			apellido: req.body.apellido,
 		});
 		p.save(function(err, persona) {
 			if(err)return res.send(500, err.message);
@@ -33,21 +33,20 @@
 		});
 	};
 
-	//PUT modificar el objecto
-	exports.updateUser = function(req, res) {
-		Usuario.findById(req.params.id, function(err, persona) {
-			persona.nombre = req.body.nombre;
-			persona.apellido = req.body.apellido;
+	//PUT modificar el objeto
+	exports.update = function(req, res) {
+		
+		var query = {_id: req.params.id};
 
-			persona.save(function(err) {
-				if(err) return res.status(500).send(err.message);
-				res.status(200).jsonp(persona);
-			});
+		 console.log(req.body);
+		Usuario.findOneAndUpdate(query, req.body, function(err, usuario){
+			if(err) return res.status(500).send(err.message);
+				res.status(200).jsonp(usuario);
 		});
 	};
 
 	//DELETE elimina registro
-	exports.deleteUser = function(req, res) {
+	exports.remove = function(req, res) {
 		Usuario.findById(req.params.id, function(err, persona) {
 			persona.remove(function(err) {
 				if(err) return res.status(500).send(err.message);

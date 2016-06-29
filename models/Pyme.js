@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var restful = require('node-restful');
 
 Schema = mongoose.Schema;
 
@@ -10,13 +9,15 @@ var PymeSchema = new Schema({
 	telefono: {type: String},
 	email: {type: String},
 	website: {type: String},
+	estado: {type: Boolean},
 	ubicacion: {
 		lat: {type: Number},
 		lng: {type: Number},
 	},
 	descripcion: {type: String},
+	imagenes: [{type: Schema.Types.ObjectId, ref: 'Imagen'}],
 	usuario: {type: Schema.Types.ObjectId, ref: 'Usuario'}
 
 });
 
-module.exports = restful.model('Pyme', PymeSchema);
+module.exports = mongoose.model('Pyme', PymeSchema);

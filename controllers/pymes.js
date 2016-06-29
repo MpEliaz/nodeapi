@@ -1,5 +1,5 @@
 //var mongoose = require('mongoose');
-//var Pyme = mongoose.model('Pyme');
+var Pyme = require('../models/Pyme.js');
 
 //GET obtener todas las pymes
 exports.all = function(req, res) {
@@ -33,9 +33,7 @@ exports.add = function(req, res) {
 		ubicacion:{
 			lat: req.body.lat,
 			lng: req.body.lng,
-		},
-		nombre: req.body.nombre,
-		apellido: req.body.apellido,
+		}
 	});
 	p.save(function(err, pyme) {
 		if(err)return res.send(500, err.message);
@@ -45,19 +43,17 @@ exports.add = function(req, res) {
 
 //PUT modificar el objecto
 exports.update = function(req, res) {
-	Pyme.findById(req.params.id, function(err, pyme) {
-		pyme.nombre = req.body.nombre;
-		pyme.apellido = req.body.apellido;
-
-		pyme.save(function(err) {
-			if(err) return res.status(500).send(err.message);
+	
+	var query = {_id: req.params.id};
+	
+	Pyme.findOneAndUpdate(query, req.body, function(err, pyme){
+		if(err) return res.status(500).send(err.message);
 			res.status(200).jsonp(pyme);
-		});
 	});
-}
+};
 
 //DELETE elimina registro
-exports.delete = function(req, res) {
+exports.remove = function(req, res) {
 	Pyme.findById(req.params.id, function(err, pyme) {
 		pyme.remove(function(err) {
 			if(err) return res.status(500).send(err.message);

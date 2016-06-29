@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 // Connection to DB
-mongoose.connect('mongodb://localhost/jic', function(err, res) {
+mongoose.connect('mongodb://localhost/chiloeapp', function(err, res) {
   if(err) throw err;
   console.log('Conectado a la base de datos...');
 });
@@ -22,7 +22,7 @@ var api = require('./routes/api');
 app.use('/api', api);
 
 //Iniciar Servidor
-app.listen(port, function() {
+app.listen(port,'192.168.50.17', function() {
 	console.log("la magia esta en el puerto "+port);	
 });
 
