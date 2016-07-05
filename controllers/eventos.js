@@ -1,20 +1,23 @@
 //var mongoose = require('mongoose');
 var Evento = require('../models/Evento.js');
+var Comuna = require('../models/Comuna.js');
 
 //GET obtener todas las eventos
 exports.all = function(req, res) {
 	Evento.find(function (err, eventos) {
-		if(err)res.send(500, err.message);
-
-		console.log('GET /Eventos');
-		res.status(200).jsonp(eventos);
+		Comuna.populate(eventos, {path: "comuna"}, function(err, eventos){
+			
+			if(err)res.send(500, err.message);
+			res.status(200).send(eventos);
+		});
 	});
 }
 
 //GET obtener un objeto
 exports.byId = function(req, res) {
 	Evento.findById(req.params.id, function(err, evento) {
-		if(err) return res.send(500, err.message);
+		if(err) return res.send(500
+		, err.message);
 
     console.log('GET /eventos/' + req.params.id);
         res.status(200).jsonp(evento);
@@ -33,8 +36,8 @@ exports.add = function(req, res) {
 		
 	});
 	e.save(function(err, evento) {
-		if(err)return res.send(500, err.message);
-				res.status(200).jsonp(evento);
+		if(err)return res.status(500).send(err.message);
+				res.status(200).send(evento);
 	});
 }
 

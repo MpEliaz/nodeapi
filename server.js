@@ -22,7 +22,7 @@ var api = require('./routes/api');
 app.use('/api', api);
 
 //Iniciar Servidor
-app.listen(port,'192.168.50.17', function() {
+app.listen(port,'localhost', function() {
 	console.log("la magia esta en el puerto "+port);	
 });
 

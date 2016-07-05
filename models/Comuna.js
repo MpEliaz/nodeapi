@@ -1,16 +1,10 @@
 var mongoose = require('mongoose');
-var restful = require('node-restful');
 
 Schema = mongoose.Schema;
 
 var ComunaSchema = new Schema({
-	nombre: {type: String},
-	descripcion: {type: String},
-	ubicacion: {
-		lat: {type: Number},
-		lng: {type: Number},
-	},
-	imagenes: [{type: Schema.Types.ObjectId, ref: 'Imagen'}],
+	nombre: {type: String, required: "El nombre es obligatorio"},
+	descripcion: {type: String, required: "La descripcion es obligatoria"},
 });
 
-module.exports = restful.model('Imagen', ComunaSchema);
+module.exports = mongoose.model('Comuna', ComunaSchema);

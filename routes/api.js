@@ -28,6 +28,23 @@ router.post('/eventos', eventosController.add);
 router.put('/eventos/:id', eventosController.update);
 router.delete('/eventos/:id', eventosController.remove);
 
+//COMUNAS PATH
+var comunasController = require('../controllers/comunas');
+
+router.get('/comunas', comunasController.all);
+router.get('/comunas/:id', comunasController.byId);
+router.post('/comunas', comunasController.add);
+router.put('/comunas/:id', comunasController.update);
+router.delete('/comunas/:id', comunasController.remove);
+
+//IMAGENES PATH
+var imagenesController = require('../controllers/imagenes');
+
+router.get('/imagenes', imagenesController.all);
+router.get('/imagenes/:id', imagenesController.byId);
+router.post('/imagenes', imagenesController.add);
+router.put('/imagenes/:id', imagenesController.update);
+router.delete('/imagenes/:id', imagenesController.remove);
 
 
 
