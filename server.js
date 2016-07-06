@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
+var host = '192.168.50.17';
 
 
 app.get('/', function(req, res) {
@@ -22,7 +23,7 @@ var api = require('./routes/api');
 app.use('/api', api);
 
 //Iniciar Servidor
-app.listen(port,'localhost', function() {
-	console.log("la magia esta en el puerto "+port);	
+app.listen(port,host, function() {
+	console.log("el servidor esta corriendo en: "+host+':'+port);	
 });
 

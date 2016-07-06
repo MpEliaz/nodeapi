@@ -15,6 +15,8 @@ var PymeSchema = new Schema({
 		lng: {type: Number},
 	},
 	descripcion: {type: String},
+	imagen_lista: {type: String},
+	calificacion: {type: Number},
 	imagenes: [{type: Schema.Types.ObjectId, ref: 'Imagen'}],
 	usuario: {type: Schema.Types.ObjectId, ref: 'Usuario'}
 
