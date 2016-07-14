@@ -7,6 +7,7 @@ exports.all = function(req, res) {
 	Evento.find(function (err, eventos) {
 		Comuna.populate(eventos, {path: "comuna"}, function(err, eventos){
 			
+			console.log('GET /Eventos');
 			if(err)res.send(500, err.message);
 			res.status(200).send(eventos);
 		});

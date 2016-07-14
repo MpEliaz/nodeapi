@@ -21,7 +21,7 @@ exports.byId = function(req, res) {
 	});
 }
 
-//POST insertar objecto
+//POST insertar objeto
 exports.add = function(req, res) {
 	var p = new Pyme({
 		nombre: req.body.nombre,
@@ -30,6 +30,7 @@ exports.add = function(req, res) {
 		telefono: req.body.telefono,
 		email: req.body.email,
 		website: req.body.website,
+		estado: true,
 		ubicacion:{
 			lat: req.body.lat,
 			lng: req.body.lng,
