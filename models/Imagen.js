@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 
 var ImagenSchema = new Schema({
-	nombre: {type: String, required: "al dato es requerido"},
-	descripcion: {type: String, required: "al dato es requerido"},
-	url: {type: String, required: "al dato es requerido"}
+	nombre: {type: String},
+	descripcion: {type: String},
+	url: {type: String}
 });
 
 module.exports = mongoose.model('Imagen', ImagenSchema);

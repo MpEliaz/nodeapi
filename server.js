@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
-var host = '192.168.50.17';
-
+//var host = '192.168.50.17';
+var host = 'localhost';
 
 app.get('/', function(req, res) {
 	res.send("HOLI");

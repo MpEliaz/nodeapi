@@ -16,6 +16,7 @@ var pymesController = require('../controllers/pymes');
 router.get('/pymes', pymesController.all);
 router.get('/pymes/:id', pymesController.byId);
 router.post('/pymes', pymesController.add);
+router.post('/pymes/:id/imagenes', pymesController.insertarImagen);
 router.put('/pymes/:id', pymesController.update);
 router.delete('/pymes/:id', pymesController.remove);
 

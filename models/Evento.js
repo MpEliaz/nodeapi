@@ -8,8 +8,7 @@ var EventoSchema = new Schema({
 	fecha: {type: Date, required: "La fecha es obligatoria"},
 	comuna: {type: Schema.ObjectId, ref: "Comuna", required: "la comuna es obligatoria"},
 	valor: {type: Number, required: "El valor es obligatorio"},
-	imagenes: [{		
-	}]
+	imagenes: [{type: Schema.Types.ObjectId, ref: 'Imagen'}]
 });
 
 module.exports = mongoose.model('Evento', EventoSchema);
